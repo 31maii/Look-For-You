@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가상 피팅</title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+    integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+    integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <style>
+    @font-face {
+      font-family: 'SUIT-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Arita-buri-SemiBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: 'SUIT-Regular';
+    }
+
+    h3 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    body {
+      padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #menual_form {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+
+  <!--navigation bar-->
+  <nav id="navbar" style="display: flex; flex-direction: row; align-items: center;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: white;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="font-family: Arita-buri-SemiBold;">LOOK FOR YOU</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline flex-row">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="fitting.html">가상 피팅</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="like_list.html">찜 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="mypage.html">마이페이지</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0 flex-row">
+          <li class="nav-item" style="margin-right: 10px;">
+            <a class="nav-link active" aria-current="page" href="login.html"
+              style="font-family: Arita-buri-SemiBold;">Login</a>
+          </li>
+          <li class="nav-item" style="margin-right: 10px;">
+            <a class="nav-link active" aria-current="page" href="signup.html"
+              style="font-family: Arita-buri-SemiBold;">Signin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </nav>
+
+  <h3><b>가상피팅</b></h3>
+  <section id="menual_form">
+    <h5 style="margin-bottom: 20px;"><b>💡가상피팅 서비스 사용법💡</b></h5>
+    <p>해당 페이지에서는 가상피팅 서비스를 제공하고 있습니다.</p>
+    <p>인물 사진을 등록한 후 원하는 부분을 선택하여 코디를 해보세요 :D</p>
+    <ul>
+      <ol>
+        <li>원하는 인물 사진을 등록하세요.</li>
+        <li>코디하고 싶은 부분을 색칠하세요.</li>
+        <li>원하는 코디를 입력하세요.</li>
+        <li>완료 버튼을 누르면 코디 후의 모습을 볼 수 있습니다.</li>
+      </ol>
+    </ul>
+    <p>❗코디 입력 시 필수적으로 적용하고 싶은 부분은 소괄호()를 사용하여 입력해 주세요.</p>
+    <p>✔️ 찜 버튼을 누르면 찜 목록으로 이동하게 됩니다. (회원가입 후 이용 가능)</p>
+  </section>
+
+  <section id="fitting_service" class="gradio-container" style="padding: 10px;">
+    <div id="fitting_service1">
+      <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.6/gradio.js"></script>
+      <gradio-app src="https://runwayml-stable-diffusion-inpainting.hf.space/"></gradio-app>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+    integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+    integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+    crossorigin="anonymous"></script>
+  <script src="{{url_for('static', filename = 'signup.js')}}"></script>
+  <!--아이디 중복시 alert창 출력-->
+  {%with messages = get_flashed_messages()%}
+  {%if messages %}
+  <script type="text/javascript">
+    alert("{{messages[-1]}}");
+  </script>
+  {%endif%}
+  {%endwith%}
+</head>
+
+<body>
+  <style>
+    @font-face {
+      font-family: 'SUIT-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Arita-buri-SemiBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: 'SUIT-Regular';
+    }
+
+    h3 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    h5 {
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    #signup {
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    table {
+      margin: 30px;
+    }
+
+    #completesignup {
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+    }
+
+    input[type="radio"] {
+      border-color: rgb(88, 88, 88);
+      cursor: pointer;
+    }
+
+    input[type="radio"]:checked {
+      background-color: black;
+      border-color: black;
+      color: white;
+    }
+
+    #signup_form {
+      width: 90%;
+      max-width: 800px;
+    }
+
+    #complete_signup {
+      display: block;
+      margin: 20px auto;
+      width: 150px;
+      height: 35px;
+      background-color: black;
+      color: white;
+      border: none;
+    }
+
+    input {
+      margin-left: 10px;
+    }
+  </style>
+
+
+  <!--navigation bar-->
+  <nav id="navbar" style="display: flex; flex-direction: row; align-items: center;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: white;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="font-family: Arita-buri-SemiBold;">LOOK FOR YOU</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline flex-row">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="fitting.html">가상 피팅</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="like_list.html">찜 목록</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="mypage.html">마이페이지</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0 flex-row">
+          <li class="nav-item" style="margin-right: 10px;">
+            <a class="nav-link active" aria-current="page" href="login.html"
+              style="font-family: Arita-buri-SemiBold;">Login</a>
+          </li>
+          <li class="nav-item" style="margin-right: 10px;">
+            <a class="nav-link active" aria-current="page" href="signup.html"
+              style="font-family: Arita-buri-SemiBold;">Signin</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </nav>
+
+
+  <section id="signup_form">
+    <h3><b>회원가입</b></h3>
+    <form id="signup" class="row g-3" id="signup" action="{{url_for(" signin_done")}}" method="get">
+      <table>
+        <tr>
+          <td class="col-md-2">아이디</td>
+          <td>
+            <div class="row g-3 align-items-center">
+              <div class="col-md-6">
+                <input type="id" id="signup_id" name="signup_id" class="form-control"
+                  aria-labelledby="passwordHelpInline">
+              </div>
+              <div class="col-auto">
+                <span id="id_rule" class="form-text">
+                  영문 소문자/숫자 6~16자
+                </span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2">비밀번호</td>
+          <td>
+            <div class="row g-3 align-items-center">
+              <div class="col-md-6">
+                <input type="password" id="signup_pw" name="signup_pw" class="form-control"
+                  aria-labelledby="passwordHelpInline" onmouseup="check_pw()">
+              </div>
+              <div class="col-auto">
+                <span id="pw_rule" class="form-text">
+                  영문 대소문자/숫자 8~16자
+                </span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2">비밀번호 확인</td>
+          <td>
+            <div class="col-md-6">
+              <input type="password" class="form-control" id="signup_pw1">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2">이름</td>
+          <td>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="signup_name" name="signup_name">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="col-md-2">이메일</td>
+          <td>
+            <div class="col-10">
+              <input type="email" class="form-control" id="signup_email" name="signup_email"
+                placeholder="ex) amardi@lookforyou.com">
+            </div>
+          </td>
+        </tr>
+      </table>
+      <button type="submit" id="complete_signup" onclick="signup()">회원가입 완료</button> <!-- 속성 생략-->
+    </form>
+
+  </section>
+</body>
+<!-- class="btn btn-dark"-->
+</html>
